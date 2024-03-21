@@ -52,10 +52,38 @@ The game will start with Mario as main character and mulitple statistics :
 - Badge points = 3/3
 - Experience points = 0
 - Kamas = 100
-- 
 
 Every 100 experience points the player have the ability to increase the life points, the flower points or the badge points. If the the experience points are over 100 the extras points are keeped but reduced of 100 (e.g. 105exp -> 5exp)
 
 ### Passive NPCs
 Every passive NPC's will have a name 
+
+
+### Aggresive Characters
+
+The particularity of the aggressive characters is the fact that they don't talk in the game And they appear page by page so we can't have two ennemies on the same page.
+
+Their principal behavior in the game is the fact that when they detect mario they move toward on him, but mario can ....
+
+In our game the main character is X-NAUT, there is his statistic :
+
+- Life points = 10/10
+- FLower points = 5/5
+- Badge points = 3/3
+- Experience points = 0
+- Kamas = 100
+
+The second ennemies is Craw : 
+
+- Life points = 10/10
+- FLower points = 5/5
+- Badge points = 3/3
+- Experience points = 0
+- Kamas = 100
+
+The third ennemies is : 
+
+
+
+
 
