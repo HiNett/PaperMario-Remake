@@ -3,8 +3,20 @@
 <details>
 <summary>Table of content</summary>
 
-- [Paper Mario - Remake | Functional Specifications](#paper-mario---remake--technical-specification)
-  - [1. Movements](#1-movements)
+- [Paper Mario - Remake | Technical Specification](#paper-mario---remake--technical-specification)
+  - [1. Gameplays](#1-gameplays)
+    - [1.1 Exploration Mode](#11-exploration-mode)
+    - [1.2 Combat Mode](#12-combat-mode)
+    - [1.3 Controls](#13-controls)
+  - [2. Characters](#2-characters)
+    - [2.1 Mario](#21-mario)
+    - [2.2 Passive NPCs](#22-passive-npcs)
+    - [2.4 NPCs Diagram](#24-npcs-diagram)
+  - [3. Items](#3-items)
+    - [3.1 In overworld](#31-in-overworld)
+    - [3.2 In combat](#32-in-combat)
+    - [3.3 Item Diagram](#33-item-diagram)
+  
 
 </details>
 
@@ -55,35 +67,16 @@ The game will start with Mario as main character and mulitple statistics :
 
 Every 100 experience points the player have the ability to increase the life points, the flower points or the badge points. If the the experience points are over 100 the extras points are keeped but reduced of 100 (e.g. 105exp -> 5exp)
 
-### Passive NPCs
-Every passive NPC's will have a name 
+### 2.2 Passive NPCs
+Every passive NPC's will have a name, dialogue, and can give items to Mario (good or bad). They cannot jump or use external animation expect move the right to the left and talk.
 
+### 2.4 NPCs Diagram
+![charatersDiamgrams](..\Assets\characterDiagram.png)
 
-### Aggresive Characters
-
-The particularity of the aggressive characters is the fact that they don't talk in the game And they appear page by page so we can't have two ennemies on the same page.
-
-Their principal behavior in the game is the fact that when they detect mario they move toward on him, but mario can ....
-
-In our game the main character is X-NAUT, there is his statistic :
-
-- Life points = 10/10
-- FLower points = 5/5
-- Badge points = 3/3
-- Experience points = 0
-- Kamas = 100
-
-The second ennemies is Craw : 
-
-- Life points = 10/10
-- FLower points = 5/5
-- Badge points = 3/3
-- Experience points = 0
-- Kamas = 100
-
-The third ennemies is : 
-
-
-
-
-
+## 3. Items
+### 3.1 In overworld
+The player will be able to use some items at any time.
+### 3.2 In combat
+The player will be able to use all items during the fight, after using the option the turn is over.
+### 3.3 Item Diagram
+![itemDiagram](..\Assets\itemDiagram.png)
