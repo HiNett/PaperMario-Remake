@@ -1,20 +1,13 @@
 #include <iostream>
-#include <unistd.h>
 #include <SFML/Graphics.hpp>
-
+#include <unistd.h>
+using namespace std;
 int main()
 {
     sf::RenderWindow window(sf::VideoMode(1920, 1080), "Paper Mario - Remake");
-
-    while (window.isOpen())
-    {
-        sf::Event event;
-        while (window.pollEvent(event))
-        {
-            if (event.type == sf::Event::Closed)
-                window.close();
-        }
-
+    window.setFramerateLimit(60);
+    int choice=0, choiceLeft=1;
+    bool isAKeyPressed=false, isChoiceWaiting=true;
 
     sf::Texture backgroundTexture;
     backgroundTexture.loadFromFile("../Assets/GameAssets/background-menu.jpeg");
@@ -30,35 +23,129 @@ int main()
     spriteBackground.setTexture(backgroundTexture);
     spriteBackground.setScale(ScaleX, ScaleY);      //Set scale.
 
-    sf::Texture playMenu;
-    playMenu.loadFromFile("../Assets/GameAssets/play-menu-selected.png");
-    sf::Texture settingMenu;
-    settingMenu.loadFromFile("../Assets/GameAssets/settings-menu-notSelected.png");
-    sf::Texture exitMenu;
-    exitMenu.loadFromFile("../Assets/GameAssets/exit-menu-notSelected.png");
+    sf::Texture playMenuSelected;
+    playMenuSelected.loadFromFile("../Assets/GameAssets/play-menu-selected.png");
+    sf::Texture playMenuNotSelected;
+    playMenuNotSelected.loadFromFile("../Assets/GameAssets/play-menu-notSelected.png");
+    sf::Texture settingMenuSelected;
+    settingMenuSelected.loadFromFile("../Assets/GameAssets/settings-menu-selected.png");
+    sf::Texture settingMenuNotSelected;
+    settingMenuNotSelected.loadFromFile("../Assets/GameAssets/settings-menu-notSelected.png");
+    sf::Texture exitMenuSelected;
+    exitMenuSelected.loadFromFile("../Assets/GameAssets/exit-menu-selected.png");
+    sf::Texture exitMenuNotSelected;
+    exitMenuNotSelected.loadFromFile("../Assets/GameAssets/exit-menu-notSelected.png");
 
-    sf::RectangleShape startRectangle;
-    startRectangle.setSize(sf::Vector2f(200, 100));
-    startRectangle.setPosition(WindowSize.x/2.3, WindowSize.y/4.5);
-    startRectangle.setTexture(&playMenu);
+    sf::RectangleShape startRectangleSelected;
+    startRectangleSelected.setSize(sf::Vector2f(200, 100));
+    startRectangleSelected.setPosition(WindowSize.x/2.3, WindowSize.y/4.5);
+    startRectangleSelected.setTexture(&playMenuSelected);
 
-    sf::RectangleShape settingRectangle;
-    settingRectangle.setSize(sf::Vector2f(300,100));
-    settingRectangle.setPosition(WindowSize.x/2.5, WindowSize.y/2.5);
-    settingRectangle.setTexture(&settingMenu);
+    sf::RectangleShape startRectangleNotSelected;
+    startRectangleNotSelected.setSize(sf::Vector2f(200, 100));
+    startRectangleNotSelected.setPosition(WindowSize.x/2.3, WindowSize.y/4.5);
+    startRectangleNotSelected.setTexture(&playMenuNotSelected);
 
-    sf::RectangleShape exitRectangle;
-    exitRectangle.setSize(sf::Vector2f(200,100));
-    exitRectangle.setPosition(WindowSize.x/2.3, WindowSize.y/1.7);
-    exitRectangle.setTexture(&exitMenu);
+    sf::RectangleShape settingRectangleSelected;
+    settingRectangleSelected.setSize(sf::Vector2f(300,100));
+    settingRectangleSelected.setPosition(WindowSize.x/2.5, WindowSize.y/2.5);
+    settingRectangleSelected.setTexture(&settingMenuSelected);
+
+    sf::RectangleShape settingRectangleNotSelected;
+    settingRectangleNotSelected.setSize(sf::Vector2f(300,100));
+    settingRectangleNotSelected.setPosition(WindowSize.x/2.5, WindowSize.y/2.5);
+    settingRectangleNotSelected.setTexture(&settingMenuNotSelected);
+
+    sf::RectangleShape exitRectangleSelected;
+    exitRectangleSelected.setSize(sf::Vector2f(200,100));
+    exitRectangleSelected.setPosition(WindowSize.x/2.3, WindowSize.y/1.7);
+    exitRectangleSelected.setTexture(&exitMenuSelected);
+
+    sf::RectangleShape exitRectangleNotSelected;
+    exitRectangleNotSelected.setSize(sf::Vector2f(200,100));
+    exitRectangleNotSelected.setPosition(WindowSize.x/2.3, WindowSize.y/1.7);
+    exitRectangleNotSelected.setTexture(&exitMenuNotSelected);
 
     window.clear();
     window.draw(spriteBackground);
-    window.draw(startRectangle);
-    window.draw(settingRectangle);
-    window.draw(exitRectangle);
+    window.draw(startRectangleSelected);
+    window.draw(settingRectangleNotSelected);
+    window.draw(exitRectangleNotSelected);
     window.display();
-    }
 
+    while (window.isOpen())
+    {
+        sf::Event event;
+        while (window.pollEvent(event))
+        {
+            if (event.type == sf::Event::Closed)
+                window.close();
+        }
+        if(sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) {
+            if(choice >= 0 && choice <= 3){
+                choice++;
+                window.clear();
+                window.draw(spriteBackground);
+                window.draw(startRectangleSelected);
+                window.draw(settingRectangleNotSelected);
+                window.draw(exitRectangleNotSelected);
+                window.display();
+            } else if(choice >= 4 && choice <= 7){
+                choice++;
+                window.clear();
+                window.draw(spriteBackground);
+                window.draw(startRectangleNotSelected);
+                window.draw(settingRectangleSelected);
+                window.draw(exitRectangleNotSelected);
+                window.display();
+            } else if(choice >= 8 && choice <= 11){
+                choice++;
+                window.clear();
+                window.draw(spriteBackground);
+                window.draw(startRectangleNotSelected);
+                window.draw(settingRectangleNotSelected);
+                window.draw(exitRectangleSelected);
+                window.display();
+            } else choice=0;
+        }
+
+        if(sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) {
+            if(choice >= 0 && choice <= 3){
+                choice--;
+                window.clear();
+                window.draw(spriteBackground);
+                window.draw(startRectangleSelected);
+                window.draw(settingRectangleNotSelected);
+                window.draw(exitRectangleNotSelected);
+                window.display();
+            } else if(choice >= 4 && choice <= 7){
+                choice--;
+                window.clear();
+                window.draw(spriteBackground);
+                window.draw(startRectangleNotSelected);
+                window.draw(settingRectangleSelected);
+                window.draw(exitRectangleNotSelected);
+                window.display();
+            } else if(choice >= 8 && choice <= 11){
+                choice--;
+                window.clear();
+                window.draw(spriteBackground);
+                window.draw(startRectangleNotSelected);
+                window.draw(settingRectangleNotSelected);
+                window.draw(exitRectangleSelected);
+                window.display();
+            } else choice = 10;
+        }
+
+        if(sf::Keyboard::isKeyPressed(sf::Keyboard::Enter)){
+            if(choice >= -1 && choice <= 3){
+                //loadGame();
+            } else if(choice >= 4 && choice <= 7){
+                //loadSettings();
+            } else if(choice >= 8 && choice <= 12){
+                window.close();
+            }
+        }
+    }
     return 0;
 }
