@@ -2,11 +2,16 @@
 #include <SFML/Graphics.hpp>
 #include <unistd.h>
 #include "./loadingGame.cpp"
+#include "./MarioSprite.cpp"
 using namespace std;
+
+bool gameStarted = false;
 
 int main()
 {
     sf::RenderWindow window(sf::VideoMode(1920, 1080), "Paper Mario - Remake");
+    MarioSprite marioSprite;
+    marioSprite.setPosition(0, 0);
     window.setFramerateLimit(60);
     int choice=0, choiceLeft=1;
     bool isAKeyPressed=false, isChoiceWaiting=true;
@@ -80,10 +85,13 @@ int main()
         sf::Event event;
         while (window.pollEvent(event))
         {
-            if (event.type == sf::Event::Closed)
+            if (event.type == sf::Event::Closed){
                 window.close();
+            }
+
+            marioSprite.handleInput(event);
         }
-        if(sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) {
+        if(sf::Keyboard::isKeyPressed(sf::Keyboard::Down) && gameStarted == false) {
             if(choice >= 0 && choice <= 3){
                 choice++;
                 window.clear();
@@ -111,7 +119,7 @@ int main()
             } else choice=0;
         }
 
-        if(sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) {
+        if(sf::Keyboard::isKeyPressed(sf::Keyboard::Up) && gameStarted == false) {
             if(choice >= 0 && choice <= 3){
                 choice--;
                 window.clear();
@@ -141,7 +149,12 @@ int main()
 
         if(sf::Keyboard::isKeyPressed(sf::Keyboard::Enter)){
             if(choice >= -1 && choice <= 3){
+                gameStarted = true;
                 loadingGame();
+                marioSprite.update();
+                window.clear();
+                marioSprite.draw(window);
+                window.display();
             } else if(choice >= 4 && choice <= 7){
                 //loadSettings();
             } else if(choice >= 8 && choice <= 12){
