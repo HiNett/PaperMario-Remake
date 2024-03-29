@@ -1,7 +1,12 @@
+#ifndef loadingGame_CPP
+#define loadingGame_CPP
+
 #include <iostream>
 #include <fstream>
 #include <string>
 using std::string;
+
+
 
 string character, items;
 int lifePoints, powerPoints, defensePoints, yPosition, xPosition, experiencePoints, level, flowerPoints, badgePoints, kamas, jump;
@@ -60,3 +65,5 @@ int loadingGame()
     std::cout << "Items: " << items << std::endl;
     return 0;
 }
+
+#endif
