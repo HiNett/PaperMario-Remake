@@ -10,7 +10,7 @@ MarioSprite::MarioSprite() {
     currentRightFeetFrame = 0;
     animationSpeed = 0.5f;
     xPosition = 100;
-    yPosition = 425;
+    yPosition;
 
     if (!marioTexture.loadFromFile("../Assets/Sprites/MarioSprites.png")) {
         return;

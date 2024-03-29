@@ -10,7 +10,10 @@ bool gameLoaded = false;
 
 int main()
 {
-    sf::RenderWindow window(sf::VideoMode(1600, 900), "Paper Mario - Remake");
+    #ifndef WINDOW_H
+    #define WINDOW_H
+    sf::RenderWindow window(sf::VideoMode(600, 800), "Paper Mario - Remake");
+    #endif
     MarioSprite marioSprite;
     marioSprite.setPosition(marioSprite.xPosition, marioSprite.yPosition);
     window.setFramerateLimit(60);
@@ -182,10 +185,16 @@ int main()
                     tutorialSprite.setTexture(tutorialTexture);
                     tutorialSprite.setScale(ScaleX, ScaleY);      //Set scale.
                     
+                    // Create a rectangle, that is at the bottom of the map, take all the ground, and is 10% tall of the window
+                    sf::RectangleShape ground(sf::Vector2f(WindowSize.x, WindowSize.y * 0.242));
+                    ground.setPosition(0, WindowSize.y - WindowSize.y * 0.242);
+                    ground.setFillColor(sf::Color::Green);
 
+                    marioSprite.yPosition = WindowSize.y - WindowSize.y * 0.242 - 165;
                     marioSprite.update();
                     window.clear();
                     window.draw(tutorialSprite);
+                    window.draw(ground);
                     marioSprite.draw(window);
                     window.display();
                 } else if(marioPhase == 1 && accessPhase >= 1){

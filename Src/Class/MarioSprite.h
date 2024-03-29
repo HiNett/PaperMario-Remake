@@ -6,7 +6,6 @@
 class MarioSprite {
 private:
     sf::Texture marioTexture;
-    
     sf::Sprite marioLeftFeetSprite;
     sf::Sprite marioRightFeetSprite;
     sf::Sprite marioBodySprite;
@@ -34,7 +33,6 @@ private:
     int currentRightFeetFrame = 0;
     sf::Clock animationClock;
     float animationSpeed;
-    
 
 public:
     MarioSprite();
