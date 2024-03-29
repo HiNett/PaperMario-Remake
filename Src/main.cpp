@@ -1,7 +1,9 @@
 #include <iostream>
 #include <SFML/Graphics.hpp>
 #include <unistd.h>
+#include "./loadingGame.cpp"
 using namespace std;
+
 int main()
 {
     sf::RenderWindow window(sf::VideoMode(1920, 1080), "Paper Mario - Remake");
@@ -139,7 +141,7 @@ int main()
 
         if(sf::Keyboard::isKeyPressed(sf::Keyboard::Enter)){
             if(choice >= -1 && choice <= 3){
-                //loadGame();
+                loadingGame();
             } else if(choice >= 4 && choice <= 7){
                 //loadSettings();
             } else if(choice >= 8 && choice <= 12){

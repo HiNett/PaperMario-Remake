@@ -1,0 +1,13 @@
+Mario
+10
+1
+0
+100
+100
+0
+1
+5
+3
+1000
+1
+{ItemID:"1", ItemName:"Banana", ItemPrice:"100", ItemDescription:"My description", ItemFight:"true", ItemLifepoints:"10", ItemFlowerpoints:"5"}{ItemID:"1", ItemName:"Banana", ItemPrice:"100", ItemDescription:"My description", ItemFight:"true", ItemLifepoints:"10", ItemFlowerpoints:"5"}
