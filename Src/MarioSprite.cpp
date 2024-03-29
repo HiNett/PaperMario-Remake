@@ -1,6 +1,11 @@
 #include "./Class/MarioSprite.h"
 
 MarioSprite::MarioSprite() {
+    movingLeft = false;
+    movingRight = false;
+    movingUp = false;
+    movingDown = false;
+    moveSpeed = 5.0f;
     moveSpeed = 10.0f;
     currentLeftFeetFrame = 0;
     currentRightFeetFrame = 0;
@@ -8,7 +13,7 @@ MarioSprite::MarioSprite() {
     xPosition = 100;
     yPosition;
 
-    if (!marioTexture.loadFromFile("../Assets/Sprites/HammerBros.png")) {
+    if (!marioTexture.loadFromFile("../Assets/Sprites/MarioSprites.png")) {
         return;
     }
 

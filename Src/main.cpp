@@ -13,7 +13,7 @@ int main()
 {
     #ifndef WINDOW_H
     #define WINDOW_H
-    sf::RenderWindow window(sf::VideoMode(1600, 900), "Paper Mario - Remake");
+    sf::RenderWindow window(sf::VideoMode(1920, 1080), "Paper Mario - Remake");
     #endif
     MarioSprite marioSprite;
     marioSprite.setPosition(marioSprite.xPosition, marioSprite.yPosition);
@@ -195,11 +195,11 @@ int main()
 
                     marioSprite.yPosition = WindowSize.y - WindowSize.y * 0.242 - 165;
                     marioSprite.update();
-                    hammerBrosTutorial.update();
                     window.clear();
+                    window.draw(tutorialSprite);
                     window.draw(ground);
-                    marioSprite.draw(window);
                     hammerBrosTutorial.draw(window);
+                    marioSprite.draw(window);
                     window.display();
                 } else if(marioPhase == 1 && accessPhase >= 1){
                     // Phase 1
