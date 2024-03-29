@@ -33,6 +33,8 @@ private:
     int currentRightFeetFrame = 0;
     sf::Clock animationClock;
     float animationSpeed;
+    bool jump;
+    
 
 public:
     MarioSprite();

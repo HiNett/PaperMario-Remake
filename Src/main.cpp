@@ -3,6 +3,7 @@
 #include <unistd.h>
 #include "./loadingGame.cpp"
 #include "./MarioSprite.cpp"
+#include "./HammerBrosSprite.cpp"
 using namespace std;
 
 bool gameStarted = false;
@@ -12,10 +13,12 @@ int main()
 {
     #ifndef WINDOW_H
     #define WINDOW_H
-    sf::RenderWindow window(sf::VideoMode(600, 800), "Paper Mario - Remake");
+    sf::RenderWindow window(sf::VideoMode(1600, 900), "Paper Mario - Remake");
     #endif
     MarioSprite marioSprite;
     marioSprite.setPosition(marioSprite.xPosition, marioSprite.yPosition);
+    HammerBrosSprite hammerBrosTutorial;
+    hammerBrosTutorial.setPosition(200, 200);
     window.setFramerateLimit(60);
     int choice=0, choiceLeft=1;
     bool isAKeyPressed=false, isChoiceWaiting=true;
@@ -192,10 +195,11 @@ int main()
 
                     marioSprite.yPosition = WindowSize.y - WindowSize.y * 0.242 - 165;
                     marioSprite.update();
+                    hammerBrosTutorial.update();
                     window.clear();
-                    window.draw(tutorialSprite);
                     window.draw(ground);
                     marioSprite.draw(window);
+                    hammerBrosTutorial.draw(window);
                     window.display();
                 } else if(marioPhase == 1 && accessPhase >= 1){
                     // Phase 1
