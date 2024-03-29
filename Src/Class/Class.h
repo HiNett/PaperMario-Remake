@@ -7,7 +7,7 @@ using namespace std;
 
 class Character {
 private:
-    sf::Sprite sprite;
+    // sf::Sprite sprite;
 
 public:
     string name;
@@ -17,11 +17,6 @@ public:
     int defense;
     float yPosition;
     float xPosition;
-
-    // Constructor with a texture parameter
-    Character(sf::Texture& texture) {
-        sprite.setTexture(texture);
-    }
 };
 
 class Item {
@@ -44,28 +39,24 @@ private:
     int flowerPoint;
     int badgePoint;
     int kamas;
-    Item inventory;
     bool jump;
+    Item inventory;
 
 public:
-    // Constructor with a texture parameter
-    Mario(sf::Texture& texture) : Character(texture) {}
+    // Mario(sf::Texture& texture) : Character(texture) {}
 
-    // Get exp
-    // Lose lifePoint
-    // Lose flowerPoint
-    int readcontrols(Mario Mario) {
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) {
-            Mario.xPosition = Mario.xPosition - 5;
-            return Mario.xPosition;
-        } else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Q)) {
-            Mario.xPosition = Mario.xPosition + 5;
-            return Mario.xPosition;
-        } else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) {
-            Mario.yPosition = Mario.yPosition + 20;
-            return Mario.yPosition;
-        }
-    }
+    // int readcontrols(Mario Mario) {
+    //     if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) {
+    //         Mario.xPosition = Mario.xPosition - 5;
+    //         return Mario.xPosition;
+    //     } else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Q)) {
+    //         Mario.xPosition = Mario.xPosition + 5;
+    //         return Mario.xPosition;
+    //     } else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) {
+    //         Mario.yPosition = Mario.yPosition + 20;
+    //         return Mario.yPosition;
+    //     }
+    // }
 };
 
 class NPC : public Character {

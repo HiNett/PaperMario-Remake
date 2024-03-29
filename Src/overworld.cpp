@@ -3,9 +3,8 @@
 
 int main() {
     sf::RenderWindow window(sf::VideoMode(1600, 900), "Paper Mario - Remake");
-
-    MarioSprite marioSprite; // Crée l'objet MarioSprite en utilisant le constructeur par défaut
-    // Ne chargez pas la texture ici, utilisez la fonction loadTexture dans la boucle principale
+    MarioSprite marioSprite;
+    marioSprite.setPosition(0, 0);
 
     while (window.isOpen()) {
         sf::Event event;

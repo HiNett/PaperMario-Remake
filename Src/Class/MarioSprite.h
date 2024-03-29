@@ -5,14 +5,16 @@
 
 class MarioSprite {
 private:
-    sf::Sprite leftFeetSprite;
-    sf::Sprite rightFeetSprite;
-    sf::Sprite bodySprite;
-    sf::Sprite leftArmSprite;
-    sf::Sprite rightArmSprite;
-    sf::Sprite leftHandSprite;
-    sf::Sprite rightHandSprite;
-    sf::Sprite headSprite;
+    sf::Texture marioTexture;
+    
+    sf::Sprite marioLeftFeetSprite;
+    sf::Sprite marioRightFeetSprite;
+    sf::Sprite marioBodySprite;
+    sf::Sprite marioLeftArmSprite;
+    sf::Sprite marioRightArmSprite;
+    sf::Sprite marioLeftHandSprite;
+    sf::Sprite marioRightHandSprite;
+    sf::Sprite marioHeadSprite;
 
     sf::IntRect marioLeftFeetFrames[3];
     sf::IntRect marioRightFeetFrames[3];
@@ -34,8 +36,8 @@ private:
     float animationSpeed;
 
 public:
-    MarioSprite(); // Ajout d'un constructeur sans argument
-    void loadTexture(const sf::Texture& texture);
+    MarioSprite();
+    void loadTexture();
     void setPosition(float x, float y);
     void handleInput(sf::Event& event);
     void update();
