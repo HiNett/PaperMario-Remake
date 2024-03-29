@@ -193,7 +193,7 @@ int main()
                     ground.setPosition(0, WindowSize.y - WindowSize.y * 0.242);
                     ground.setFillColor(sf::Color::Green);
 
-                    marioSprite.yPosition = WindowSize.y - WindowSize.y * 0.242 - 165;
+                    // marioSprite.yPosition = WindowSize.y - WindowSize.y * 0.242 - 165;
                     marioSprite.update();
                     window.clear();
                     window.draw(tutorialSprite);

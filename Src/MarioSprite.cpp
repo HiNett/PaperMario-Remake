@@ -12,6 +12,7 @@ MarioSprite::MarioSprite() {
     animationSpeed = 0.5f;
     xPosition = 100;
     yPosition;
+    jump = true;
 
     if (!marioTexture.loadFromFile("../Assets/Sprites/MarioSprites.png")) {
         return;
@@ -109,9 +110,10 @@ void MarioSprite::update() {
         }
 
         xPosition += xMovement;
-        std::cout << yPosition << std::endl;
+        // std::cout << yPosition << std::endl;
         yPosition -= yMovement;
         std::cout << yPosition << std::endl;
+        std::cout << jump << std::endl;
         setPosition(xPosition, yPosition);
         marioLeftFeetSprite.move(xMovement, yMovement);
         marioRightFeetSprite.move(xMovement, yMovement);
@@ -123,14 +125,14 @@ void MarioSprite::update() {
         marioHeadSprite.move(xMovement, yMovement);
         }
 
-    if (!jump && yPosition < 425) {
+    if (!jump && yPosition < 425) { // 425 will be ground
         yPosition += 25.0f;
         setPosition(xPosition, yPosition);
-        std::cout << yPosition << std::endl;
-        if (yPosition == 425){
-            std::cout <<"jump :" << jump << std::endl;
+        // std::cout << yPosition << std::endl;
+        if (yPosition >= 425){
+            // std::cout <<"jump :" << jump << std::endl;
             jump = true;
-            std::cout <<"jump :" << jump << std::endl;
+            // std::cout <<"jump :" << jump << std::endl;
         }
     }
     // else if (yPosition < 425)
@@ -205,6 +207,7 @@ void MarioSprite::handleInput(sf::Event& event) {
         }
         else if (event.key.code == sf::Keyboard::Space){
             movingUp = false;
+            jump = false;
         }
         
 
