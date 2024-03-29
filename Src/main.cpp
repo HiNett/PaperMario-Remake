@@ -150,16 +150,19 @@ int main()
         if(sf::Keyboard::isKeyPressed(sf::Keyboard::Enter)){
             if(choice >= -1 && choice <= 3){
                 gameStarted = true;
-                loadingGame();
-                marioSprite.update();
-                window.clear();
-                marioSprite.draw(window);
-                window.display();
             } else if(choice >= 4 && choice <= 7){
                 //loadSettings();
             } else if(choice >= 8 && choice <= 12){
                 window.close();
             }
+        }
+
+        if(gameStarted == true){
+            loadingGame();
+            marioSprite.update();
+            window.clear();
+            marioSprite.draw(window);
+            window.display();
         }
     }
     return 0;
