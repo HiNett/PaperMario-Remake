@@ -6,6 +6,7 @@
 using namespace std;
 
 bool gameStarted = false;
+bool gameLoaded = false;
 
 int main()
 {
@@ -158,11 +159,16 @@ int main()
         }
 
         if(gameStarted == true){
-            loadingGame();
-            marioSprite.update();
-            window.clear();
-            marioSprite.draw(window);
-            window.display();
+            if(gameLoaded == false){
+                loadingGame();
+                gameLoaded = true;
+            }
+            if(gameLoaded == true){
+                marioSprite.update();
+                window.clear();
+                marioSprite.draw(window);
+                window.display();
+            }
         }
     }
     return 0;
