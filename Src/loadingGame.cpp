@@ -48,21 +48,21 @@ int loadingGame()
     }
     else
     {
-        std::cout << "Unable to open file";
+    //     std::cout << "Unable to open file";
     }
-    std::cout << "Character: " << character << std::endl;
-    std::cout << "Life Points: " << lifePoints << std::endl;
-    std::cout << "Power Points: " << powerPoints << std::endl;
-    std::cout << "Defense Points: " << defensePoints << std::endl;
-    std::cout << "Y Position: " << yPosition << std::endl;
-    std::cout << "X Position: " << xPosition << std::endl;
-    std::cout << "Experience Points: " << experiencePoints << std::endl;
-    std::cout << "Level: " << level << std::endl;
-    std::cout << "Flower Points: " << flowerPoints << std::endl;
-    std::cout << "Badge Points: " << badgePoints << std::endl;
-    std::cout << "Kamas: " << kamas << std::endl;
-    std::cout << "Jump: " << jump << std::endl;
-    std::cout << "Items: " << items << std::endl;
+    // std::cout << "Character: " << character << std::endl;
+    // std::cout << "Life Points: " << lifePoints << std::endl;
+    // std::cout << "Power Points: " << powerPoints << std::endl;
+    // std::cout << "Defense Points: " << defensePoints << std::endl;
+    // std::cout << "Y Position: " << yPosition << std::endl;
+    // std::cout << "X Position: " << xPosition << std::endl;
+    // std::cout << "Experience Points: " << experiencePoints << std::endl;
+    // std::cout << "Level: " << level << std::endl;
+    // std::cout << "Flower Points: " << flowerPoints << std::endl;
+    // std::cout << "Badge Points: " << badgePoints << std::endl;
+    // std::cout << "Kamas: " << kamas << std::endl;
+    // std::cout << "Jump: " << jump << std::endl;
+    // std::cout << "Items: " << items << std::endl;
     return 0;
 }
 

@@ -9,9 +9,9 @@ bool gameStarted = false;
 
 int main()
 {
-    sf::RenderWindow window(sf::VideoMode(1920, 1080), "Paper Mario - Remake");
+    sf::RenderWindow window(sf::VideoMode(1600, 900), "Paper Mario - Remake");
     MarioSprite marioSprite;
-    marioSprite.setPosition(0, 0);
+    marioSprite.setPosition(marioSprite.xPosition, marioSprite.yPosition);
     window.setFramerateLimit(60);
     int choice=0, choiceLeft=1;
     bool isAKeyPressed=false, isChoiceWaiting=true;

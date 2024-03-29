@@ -34,6 +34,7 @@ private:
     int currentRightFeetFrame = 0;
     sf::Clock animationClock;
     float animationSpeed;
+    
 
 public:
     MarioSprite();
@@ -42,6 +43,8 @@ public:
     void handleInput(sf::Event& event);
     void update();
     void draw(sf::RenderWindow& window);
+    float xPosition;
+    float yPosition;
 };
 
 #endif
