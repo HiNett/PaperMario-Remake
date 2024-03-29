@@ -164,10 +164,51 @@ int main()
                 gameLoaded = true;
             }
             if(gameLoaded == true){
-                marioSprite.update();
-                window.clear();
-                marioSprite.draw(window);
-                window.display();
+                if(marioPhase == 0){
+                    // Tutorial
+                    sf::Texture tutorialTexture;
+                    tutorialTexture.loadFromFile("../Assets/InGame/tutorial/background.png");
+
+                    sf::Sprite tutorialSprite(tutorialTexture);
+                    sf::Vector2u TextureSize;  //Added to store texture size.
+                    sf::Vector2u WindowSize;   //Added to store window size.
+
+                    TextureSize = tutorialTexture.getSize(); //Get size of texture.
+                    WindowSize = window.getSize();             //Get size of window.
+
+                    float ScaleX = (float) WindowSize.x / TextureSize.x;
+                    float ScaleY = (float) WindowSize.y / TextureSize.y;     //Calculate scale.
+
+                    tutorialSprite.setTexture(tutorialTexture);
+                    tutorialSprite.setScale(ScaleX, ScaleY);      //Set scale.
+                    
+
+                    marioSprite.update();
+                    window.clear();
+                    window.draw(tutorialSprite);
+                    marioSprite.draw(window);
+                    window.display();
+                } else if(marioPhase == 1 && accessPhase >= 1){
+                    // Phase 1
+                } else if(marioPhase == 2 && accessPhase >= 2){
+                    // Phase 2
+                } else if(marioPhase == 3 && accessPhase >= 3){
+                    // Phase 3
+                } else if(marioPhase == 4 && accessPhase >= 4){
+                    // Phase 4
+                } else if(marioPhase == 5 && accessPhase >= 5){
+                    // Phase 5
+                } else if(marioPhase == 6 && accessPhase >= 6){
+                    // Phase 6
+                } else if(marioPhase == 7 && accessPhase >= 7){
+                    // Phase 7
+                } else if(marioPhase == 8 && accessPhase >= 8){
+                    // Phase 8
+                } else if(marioPhase == 9 && accessPhase >= 9){
+                    // Phase 9
+                } else if(marioPhase == 10 && accessPhase >= 10){
+                    // Phase 10
+                }
             }
         }
     }

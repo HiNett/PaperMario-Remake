@@ -9,7 +9,7 @@ using std::string;
 
 
 string character, items;
-int lifePoints, powerPoints, defensePoints, yPosition, xPosition, experiencePoints, level, flowerPoints, badgePoints, kamas, jump;
+int marioPhase, accessPhase, lifePoints, powerPoints, defensePoints, yPosition, xPosition, experiencePoints, level, flowerPoints, badgePoints, kamas, jump;
 
 int loadingGame()
 {
@@ -20,6 +20,10 @@ int loadingGame()
         // Put each line in a variable
         // First line is character, then lifePoints, powerPoints, etc etc
         getline(file, character);
+        getline(file, line);
+        marioPhase = std::stoi(line);
+        getline(file, line);
+        accessPhase = std::stoi(line);
         getline(file, line);
         lifePoints = std::stoi(line);
         getline(file, line);

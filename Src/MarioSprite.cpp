@@ -10,7 +10,7 @@ MarioSprite::MarioSprite() {
     currentRightFeetFrame = 0;
     animationSpeed = 0.5f;
     xPosition = 100;
-    yPosition = 0;
+    yPosition = 425;
 
     if (!marioTexture.loadFromFile("../Assets/Sprites/MarioSprites.png")) {
         return;
@@ -195,7 +195,7 @@ void MarioSprite::handleInput(sf::Event& event) {
             movingLeft = false;
         }
         else if (event.key.code == sf::Keyboard::Space)
-            movingUp == false;
+            movingUp = false;
         // Handle other movement release here
     }
 }
