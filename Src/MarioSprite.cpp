@@ -96,14 +96,20 @@ void MarioSprite::update() {
     // Handle movement
     if (movingLeft || movingRight) {
         float xMovement = 0.0f;
+        float yMovement = 0.0f;
         if (movingLeft){
             xMovement -= moveSpeed;
         }
         if (movingRight){
             xMovement += moveSpeed;
         }
+        if (movingUp){
+            yMovement += moveSpeed;
+        }
 
         xPosition += xMovement;
+        yPosition += yMovement;
+
         setPosition(xPosition, yPosition);
         marioLeftFeetSprite.move(xMovement, 0);
         marioRightFeetSprite.move(xMovement, 0);
@@ -135,6 +141,10 @@ void MarioSprite::update() {
         marioRightHandSprite.setScale(1.0f, 1.0f);
         marioHeadSprite.setScale(1.0f, 1.0f);
     }
+    if (movingUp) {
+        
+    }
+
 
     if ((movingLeft || movingRight) && animationClock.getElapsedTime().asSeconds() > animationSpeed) {
         currentLeftFeetFrame = (currentLeftFeetFrame + 1) % 3;
@@ -163,16 +173,16 @@ void MarioSprite::handleInput(sf::Event& event) {
         if (event.key.code == sf::Keyboard::Left) {
             movingLeft = true;            
             movingRight = false;
-            // std::cout << "test condition = " << movingLeft << std::endl;
-            setPosition(xPosition, yPosition);
+            // setPosition(xPosition, yPosition);
         }
         if (event.key.code == sf::Keyboard::Right) {
             movingRight = true;
             movingLeft = false;
-            setPosition(xPosition, yPosition);
+            // setPosition(xPosition, yPosition);
         }
-        else if (event.key.code == sf::Keyboard::Space) {
+        if (event.key.code == sf::Keyboard::Space) {
             movingUp = true;
+            jump = false;
         }
         // Handle other movement input here
     } else if (event.type == sf::Event::KeyReleased) {
