@@ -6,7 +6,7 @@ MarioSprite::MarioSprite() {
     moveSpeed = 1.0f;
     currentLeftFeetFrame = 0;
     currentRightFeetFrame = 0;
-    animationSpeed = 0.1f;
+    animationSpeed = 1.0f;
 
     if (!marioTexture.loadFromFile("../Assets/Sprites/MarioSprites.png")) {
         return;
@@ -33,14 +33,28 @@ void MarioSprite::setPosition(float x, float y) {
 
     sf::Vector2f basePosition(x, y);
 
-    marioLeftFeetSprite.setPosition(basePosition.x + 35, basePosition.y + 135);
-    marioRightFeetSprite.setPosition(basePosition.x + 10, basePosition.y + 135);
-    marioBodySprite.setPosition(basePosition.x + 15, basePosition.y + 85);
-    marioLeftArmSprite.setPosition(basePosition.x + 55, basePosition.y + 90);
-    marioRightArmSprite.setPosition(basePosition.x + 20, basePosition.y + 227);
-    marioLeftHandSprite.setPosition(basePosition.x + 53, basePosition.y + 105);
-    marioRightHandSprite.setPosition(basePosition.x + 5, basePosition.y + 110);
-    marioHeadSprite.setPosition(basePosition.x - 5, basePosition.y + 5);
+    if (movingLeft) {
+        marioLeftFeetSprite.setPosition(basePosition.x + 35, basePosition.y + 135);
+        marioRightFeetSprite.setPosition(basePosition.x + 10, basePosition.y + 135);
+        marioBodySprite.setPosition(basePosition.x + 15, basePosition.y + 85);
+        marioLeftArmSprite.setPosition(basePosition.x + 55, basePosition.y + 90);
+        marioRightArmSprite.setPosition(basePosition.x + 20, basePosition.y + 227);
+        marioLeftHandSprite.setPosition(basePosition.x + 53, basePosition.y + 105);
+        marioRightHandSprite.setPosition(basePosition.x + 5, basePosition.y + 110);
+        marioHeadSprite.setPosition(basePosition.x - 5, basePosition.y + 5);
+    } 
+    else {
+        marioLeftFeetSprite.setPosition(basePosition.x - 35, basePosition.y + 135);
+        marioRightFeetSprite.setPosition(basePosition.x - 10, basePosition.y + 135);
+        marioBodySprite.setPosition(basePosition.x - 15, basePosition.y + 85);
+        marioLeftArmSprite.setPosition(basePosition.x - 55, basePosition.y + 90);
+        marioRightArmSprite.setPosition(basePosition.x - 20, basePosition.y + 227);
+        marioLeftHandSprite.setPosition(basePosition.x - 53, basePosition.y + 105);
+        marioRightHandSprite.setPosition(basePosition.x - 5, basePosition.y + 110);
+        marioHeadSprite.setPosition(basePosition.x + 5, basePosition.y + 5);
+    }
+    
+
 }
 
 void MarioSprite::loadTexture() {
@@ -64,13 +78,6 @@ void MarioSprite::loadTexture() {
 }
 
 void MarioSprite::update() {
-    if (animationClock.getElapsedTime().asSeconds() > animationSpeed) {
-        currentLeftFeetFrame = (currentLeftFeetFrame + 1) % 3;
-        currentRightFeetFrame = (currentRightFeetFrame + 1) % 3;
-        marioLeftFeetSprite.setTextureRect(marioLeftFeetFrames[currentLeftFeetFrame]);
-        marioRightFeetSprite.setTextureRect(marioRightFeetFrames[currentRightFeetFrame]);
-        animationClock.restart();
-    }
 
     // Handle movement
     if (movingLeft || movingRight) {
@@ -80,16 +87,45 @@ void MarioSprite::update() {
         if (movingRight)
             xMovement += moveSpeed;
 
-        // Update all parts' positions for left/right movement
-        marioLeftFeetSprite.move(xMovement, 0);
-        marioRightFeetSprite.move(xMovement, 0);
-        marioBodySprite.move(xMovement, 0);
-        marioLeftArmSprite.move(xMovement, 0);
-        marioRightArmSprite.move(xMovement, 0);
-        marioLeftHandSprite.move(xMovement, 0);
-        marioRightHandSprite.move(xMovement, 0);
-        marioHeadSprite.move(xMovement, 0);
+            marioLeftFeetSprite.move(xMovement, 0);
+            marioRightFeetSprite.move(xMovement, 0);
+            marioBodySprite.move(xMovement, 0);
+            marioLeftArmSprite.move(xMovement, 0);
+            marioRightArmSprite.move(xMovement, 0);
+            marioLeftHandSprite.move(xMovement, 0);
+            marioRightHandSprite.move(xMovement, 0);
+            marioHeadSprite.move(xMovement, 0);
+        }
+        
+    if (movingRight) {
+        marioLeftFeetSprite.setScale(-1.0f, 1.0f);
+        marioRightFeetSprite.setScale(-1.0f, 1.0f);
+        marioBodySprite.setScale(-1.0f, 1.0f);
+        marioLeftArmSprite.setScale(-1.0f, 1.0f);
+        marioRightArmSprite.setScale(-1.0f, 1.0f);
+        marioLeftHandSprite.setScale(-1.0f, 1.0f);
+        marioRightHandSprite.setScale(-1.0f, 1.0f);
+        marioHeadSprite.setScale(-1.0f, 1.0f);
     }
+    if (movingLeft) {
+        marioLeftFeetSprite.setScale(1.0f, 1.0f);
+        marioRightFeetSprite.setScale(1.0f, 1.0f);
+        marioBodySprite.setScale(1.0f, 1.0f);
+        marioLeftArmSprite.setScale(1.0f, 1.0f);
+        marioRightArmSprite.setScale(1.0f, 1.0f);
+        marioLeftHandSprite.setScale(1.0f, 1.0f);
+        marioRightHandSprite.setScale(1.0f, 1.0f);
+        marioHeadSprite.setScale(1.0f, 1.0f);
+    }
+
+    if ((movingLeft || movingRight) && animationClock.getElapsedTime().asSeconds() > animationSpeed) {
+        currentLeftFeetFrame = (currentLeftFeetFrame + 1) % 3;
+        currentRightFeetFrame = (currentRightFeetFrame + 1) % 3;
+        marioLeftFeetSprite.setTextureRect(marioLeftFeetFrames[currentLeftFeetFrame]);
+        marioRightFeetSprite.setTextureRect(marioRightFeetFrames[currentRightFeetFrame]);
+        animationClock.restart();
+    }
+    
 }
 
 void MarioSprite::draw(sf::RenderWindow& window) {
@@ -106,10 +142,12 @@ void MarioSprite::draw(sf::RenderWindow& window) {
 
 void MarioSprite::handleInput(sf::Event& event) {
     if (event.type == sf::Event::KeyPressed) {
-        if (event.key.code == sf::Keyboard::Left)
-            movingLeft = true;
-        else if (event.key.code == sf::Keyboard::Right)
+        if (event.key.code == sf::Keyboard::Left) {
+            movingLeft = true;            
+        }
+        else if (event.key.code == sf::Keyboard::Right) {
             movingRight = true;
+        }
         // Handle other movement input here
     } else if (event.type == sf::Event::KeyReleased) {
         if (event.key.code == sf::Keyboard::Left)
