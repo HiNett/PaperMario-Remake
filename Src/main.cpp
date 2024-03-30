@@ -18,7 +18,7 @@ int main()
     Mario mario;
     mario.setPosition(mario.xPosition, mario.yPosition);
     HammerBros hammerBrosTutorial;
-    hammerBrosTutorial.setPosition(200, 200);
+    hammerBrosTutorial.setPosition(200, 800);
     window.setFramerateLimit(128);
     int choice=0, choiceLeft=1;
     bool isAKeyPressed=false, isChoiceWaiting=true;

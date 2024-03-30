@@ -21,6 +21,11 @@ public:
 // Main class for all characters
 class Character {
     protected:
+
+        sf::Texture texture;
+        sf::Sprite sprite;
+        sf::IntRect intRect;
+
         // Type of Movements
         float moveSpeed;
         bool movingLeft;
@@ -29,6 +34,7 @@ class Character {
         bool movingDown;
         bool lookingLeft;
         bool lookingRight;
+        
         // Animation
         int currentFrame;
         sf::Clock animationClock;
@@ -67,24 +73,23 @@ class NPC : public Character {
 // Mario Class
 class Mario : public Character {
     private:
-        sf::Texture marioTexture;
-        sf::Sprite marioLeftFeetSprite;
-        sf::Sprite marioRightFeetSprite;
-        sf::Sprite marioBodySprite;
-        sf::Sprite marioLeftArmSprite;
-        sf::Sprite marioRightArmSprite;
-        sf::Sprite marioLeftHandSprite;
-        sf::Sprite marioRightHandSprite;
-        sf::Sprite marioHeadSprite;
+        sf::Sprite LeftFeetSprite;
+        sf::Sprite RightFeetSprite;
+        sf::Sprite BodySprite;
+        sf::Sprite LeftArmSprite;
+        sf::Sprite RightArmSprite;
+        sf::Sprite LeftHandSprite;
+        sf::Sprite RightHandSprite;
+        sf::Sprite HeadSprite;
 
-        sf::IntRect marioLeftFeetFrames[3];
-        sf::IntRect marioRightFeetFrames[3];
-        sf::IntRect marioBody;
-        sf::IntRect marioLeftArm;
-        sf::IntRect marioRightArm;
-        sf::IntRect marioLeftHand;
-        sf::IntRect marioRightHand;
-        sf::IntRect marioHead;
+        sf::IntRect LeftFeetFrames[3];
+        sf::IntRect RightFeetFrames[3];
+        sf::IntRect Body;
+        sf::IntRect LeftArm;
+        sf::IntRect RightArm;
+        sf::IntRect LeftHand;
+        sf::IntRect RightHand;
+        sf::IntRect Head;
 
         // Setup Values
         bool jump;
@@ -113,9 +118,7 @@ class Mario : public Character {
 class HammerBros : public NPC {
     
     private:
-        sf::Texture hammerBrosTexture;
-        sf::Sprite hammerBrosSprite;
-        sf::IntRect hammerBrosBody;
+
     
     public:
         HammerBros();

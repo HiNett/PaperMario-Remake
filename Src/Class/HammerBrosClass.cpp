@@ -6,36 +6,28 @@ HammerBros::HammerBros() {
     xPosition = 100;
     yPosition;
 
-    if (!hammerBrosTexture.loadFromFile("../Assets/Sprites/HammerBros.png")) {
+    if (!texture.loadFromFile("../Assets/Sprites/HammerBros.png")) {
         return;
     }
-
-    hammerBrosBody = sf::IntRect(649, 3, 149, 172);
+    intRect = sf::IntRect(649, 3, 149, 172);
     loadTexture();
 }
 
 void HammerBros::setPosition(float x, float y) {
-
-    hammerBrosSprite.setPosition(x, y);
-    
-
+    sprite.setPosition(x, y);
 }
 
 void HammerBros::loadTexture() {
-
-    hammerBrosSprite.setTexture(hammerBrosTexture);
-    hammerBrosSprite.setTextureRect(hammerBrosBody); 
+    sprite.setTexture(texture);
+    sprite.setTextureRect(intRect); 
 }
 
 void HammerBros::update() {
-    
 }
 
 void HammerBros::draw(sf::RenderWindow& window) {
-    // Draw all the parts
-    window.draw(hammerBrosSprite);
+    window.draw(sprite);
 }
 
 void HammerBros::handleInput(sf::Event& event) {
-
 }
