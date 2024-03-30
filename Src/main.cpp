@@ -2,8 +2,8 @@
 #include <SFML/Graphics.hpp>
 #include <unistd.h>
 #include "./loadingGame.cpp"
-#include "./MarioSprite.cpp"
-#include "./HammerBrosSprite.cpp"
+#include "./Class/MarioClass.cpp"
+#include "./Class/HammerBrosClass.cpp"
 using namespace std;
 
 bool gameStarted = false;
@@ -15,9 +15,9 @@ int main()
     #define WINDOW_H
     sf::RenderWindow window(sf::VideoMode(1920, 1080), "Paper Mario - Remake");
     #endif
-    MarioSprite marioSprite;
-    marioSprite.setPosition(marioSprite.xPosition, marioSprite.yPosition);
-    HammerBrosSprite hammerBrosTutorial;
+    Mario mario;
+    mario.setPosition(mario.xPosition, mario.yPosition);
+    HammerBros hammerBrosTutorial;
     hammerBrosTutorial.setPosition(200, 200);
     window.setFramerateLimit(128);
     int choice=0, choiceLeft=1;
@@ -96,7 +96,7 @@ int main()
                 window.close();
             }
 
-            marioSprite.handleInput(event);
+            mario.handleInput(event);
         }
         if(sf::Keyboard::isKeyPressed(sf::Keyboard::Down) && gameStarted == false) {
             if(choice >= 0 && choice <= 3){
@@ -193,13 +193,13 @@ int main()
                     ground.setPosition(0, WindowSize.y - WindowSize.y * 0.242);
                     ground.setFillColor(sf::Color::Green);
 
-                    // marioSprite.yPosition = WindowSize.y - WindowSize.y * 0.242 - 165;
-                    marioSprite.update();
+                    // mario.yPosition = WindowSize.y - WindowSize.y * 0.242 - 165;
+                    mario.update();
                     window.clear();
                     window.draw(tutorialSprite);
                     window.draw(ground);
                     hammerBrosTutorial.draw(window);
-                    marioSprite.draw(window);
+                    mario.draw(window);
                     window.display();
                 } else if(marioPhase == 1 && accessPhase >= 1){
                     // Phase 1

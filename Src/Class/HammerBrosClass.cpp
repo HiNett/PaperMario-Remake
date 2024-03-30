@@ -1,9 +1,7 @@
-#include "./Class/HammerBros.h"
+#include "./Class.hpp"
 
-HammerBrosSprite::HammerBrosSprite() {
+HammerBros::HammerBros() {
     moveSpeed = 10.0f;
-    currentLeftFeetFrame = 0;
-    currentRightFeetFrame = 0;
     animationSpeed = 0.5f;
     xPosition = 100;
     yPosition;
@@ -16,28 +14,28 @@ HammerBrosSprite::HammerBrosSprite() {
     loadTexture();
 }
 
-void HammerBrosSprite::setPosition(float x, float y) {
+void HammerBros::setPosition(float x, float y) {
 
     hammerBrosSprite.setPosition(x, y);
     
 
 }
 
-void HammerBrosSprite::loadTexture() {
+void HammerBros::loadTexture() {
 
     hammerBrosSprite.setTexture(hammerBrosTexture);
     hammerBrosSprite.setTextureRect(hammerBrosBody); 
 }
 
-void HammerBrosSprite::update() {
+void HammerBros::update() {
     
 }
 
-void HammerBrosSprite::draw(sf::RenderWindow& window) {
+void HammerBros::draw(sf::RenderWindow& window) {
     // Draw all the parts
     window.draw(hammerBrosSprite);
 }
 
-void HammerBrosSprite::handleInput(sf::Event& event) {
+void HammerBros::handleInput(sf::Event& event) {
 
 }

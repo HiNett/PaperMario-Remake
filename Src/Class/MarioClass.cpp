@@ -1,25 +1,21 @@
-#include "./Class/MarioSprite.h"
+#include "./Class.hpp"
 
-MarioSprite::MarioSprite() {
-    moveSpeed;
-    movingLeft;
-    movingRight;
+Mario::Mario() {
+    moveSpeed = 10.0f;
+    movingLeft = false;
+    movingRight = false;
     movingUp;
     movingDown;
     lookingLeft;
     lookingRight;
-    currentLeftFeetFrame = 0;
-    currentRightFeetFrame = 0;
+    currentFrame = 0;
+    animationClock;
     animationSpeed = 0.5f;
     jump;
-    jumpMaxHeight;
-    gravity;
-    xPosition = 100;
+    jumpMaxHeight = 300.0f;
+    gravity = 20.0f;
     originalXPosition;
-    yPosition;
     originalYPosition;
-
-
 
     if (!marioTexture.loadFromFile("../Assets/Sprites/MarioSprites.png")) {
         return;
@@ -42,7 +38,7 @@ MarioSprite::MarioSprite() {
     loadTexture();
 }
 
-void MarioSprite::setPosition(float x, float y) {
+void Mario::setPosition(float x, float y) {
 
     sf::Vector2f basePosition(x, y);
     int xOffSet = lookingRight ? -1 : 1;
@@ -58,7 +54,7 @@ void MarioSprite::setPosition(float x, float y) {
     marioHeadSprite.setPosition(basePosition.x - (5 * xOffSet) + bodyOffSet, basePosition.y + 5);
 }
 
-void MarioSprite::loadTexture() {
+void Mario::loadTexture() {
 
     marioLeftFeetSprite.setTexture(marioTexture);
     marioLeftFeetSprite.setTextureRect(marioLeftFeetFrames[0]); 
@@ -78,7 +74,7 @@ void MarioSprite::loadTexture() {
     marioHeadSprite.setTextureRect(marioHead);
 }
 
-void MarioSprite::update() {
+void Mario::update() {
     // Handle right / left movement
     if (movingLeft || movingRight) {
         float xMovement = 0.0f;
@@ -125,8 +121,8 @@ void MarioSprite::update() {
     marioHeadSprite.setScale(xOffSet, 1.0f);
 
     if ((movingLeft || movingRight) && animationClock.getElapsedTime().asSeconds() > animationSpeed) {
-        currentLeftFeetFrame = (currentLeftFeetFrame + 1) % 3;
-        currentRightFeetFrame = (currentRightFeetFrame + 1) % 3;
+        int currentLeftFeetFrame = (currentFrame + 1) % 3;
+        int currentRightFeetFrame = (currentFrame + 1) % 3;
         marioLeftFeetSprite.setTextureRect(marioLeftFeetFrames[currentLeftFeetFrame]);
         marioRightFeetSprite.setTextureRect(marioRightFeetFrames[currentRightFeetFrame]);
         animationClock.restart();
@@ -134,7 +130,7 @@ void MarioSprite::update() {
     
 }
 
-void MarioSprite::draw(sf::RenderWindow& window) {
+void Mario::draw(sf::RenderWindow& window) {
     // Draw all the parts
     window.draw(marioRightArmSprite);
     window.draw(marioRightHandSprite);
@@ -146,7 +142,7 @@ void MarioSprite::draw(sf::RenderWindow& window) {
     window.draw(marioHeadSprite);
 }
 
-void MarioSprite::handleInput(sf::Event& event) {
+void Mario::handleInput(sf::Event& event) {
     if (event.type == sf::Event::KeyPressed) {
         if (event.key.code == sf::Keyboard::Left && !movingRight) {
             movingLeft = true;     
