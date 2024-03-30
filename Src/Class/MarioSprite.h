@@ -24,18 +24,23 @@ private:
     sf::IntRect marioRightHand;
     sf::IntRect marioHead;
 
-    float moveSpeed = 1.0f;
+    float moveSpeed = 10.0f;
     bool movingLeft = false;
     bool movingRight = false;
-    bool movingUp = false;
-    bool movingDown = false;
-    int currentLeftFeetFrame = 0;
-    int currentRightFeetFrame = 0;
+    bool movingUp;
+    bool movingDown;
+    bool lookingLeft;
+    bool lookingRight;
+    int currentLeftFeetFrame;
+    int currentRightFeetFrame;
     sf::Clock animationClock;
-    float animationSpeed;
+    float animationSpeed = 0.5f;
     bool jump;
+    float jumpMaxHeight = 300.0f;
+    float gravity = 20.0f;
+    float originalXPosition;
+    float originalYPosition;
     
-
 public:
     MarioSprite();
     void loadTexture();

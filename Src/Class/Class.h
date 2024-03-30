@@ -43,20 +43,7 @@ private:
     Item inventory;
 
 public:
-    // Mario(sf::Texture& texture) : Character(texture) {}
 
-    // int readcontrols(Mario Mario) {
-    //     if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) {
-    //         Mario.xPosition = Mario.xPosition - 5;
-    //         return Mario.xPosition;
-    //     } else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Q)) {
-    //         Mario.xPosition = Mario.xPosition + 5;
-    //         return Mario.xPosition;
-    //     } else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) {
-    //         Mario.yPosition = Mario.yPosition + 20;
-    //         return Mario.yPosition;
-    //     }
-    // }
 };
 
 class NPC : public Character {

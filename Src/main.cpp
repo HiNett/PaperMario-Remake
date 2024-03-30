@@ -19,7 +19,7 @@ int main()
     marioSprite.setPosition(marioSprite.xPosition, marioSprite.yPosition);
     HammerBrosSprite hammerBrosTutorial;
     hammerBrosTutorial.setPosition(200, 200);
-    window.setFramerateLimit(60);
+    window.setFramerateLimit(128);
     int choice=0, choiceLeft=1;
     bool isAKeyPressed=false, isChoiceWaiting=true;
 
