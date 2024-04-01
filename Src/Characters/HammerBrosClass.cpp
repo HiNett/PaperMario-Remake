@@ -1,4 +1,4 @@
-#include "./Class.hpp"
+#include "./Character.hpp"
 
 HammerBros::HammerBros() {
     moveSpeed = 10.0f;
@@ -6,7 +6,7 @@ HammerBros::HammerBros() {
     xPosition = 100;
     yPosition;
 
-    if (!texture.loadFromFile("../Assets/Sprites/HammerBros.png")) {
+    if (!texture.loadFromFile("./Sprites/HammerBros.png")) {
         return;
     }
     intRect = sf::IntRect(649, 3, 149, 172);

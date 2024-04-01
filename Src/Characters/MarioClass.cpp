@@ -1,4 +1,4 @@
-#include "./Class.hpp"
+#include "./Character.hpp"
 
 Mario::Mario() {
     moveSpeed = 10.0f;
@@ -17,7 +17,7 @@ Mario::Mario() {
     originalXPosition;
     originalYPosition;
 
-    if (!texture.loadFromFile("../Assets/Sprites/MarioSprites.png")) {
+    if (!texture.loadFromFile("./Sprites/MarioSprites.png")) {
         return;
     }
 

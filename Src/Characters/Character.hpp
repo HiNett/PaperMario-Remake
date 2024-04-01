@@ -2,21 +2,9 @@
 #define CLASS_HPP
 
 #include <SFML/Graphics.hpp>
+#include "../Items/Item.hpp"
 
 using namespace std;
-
-class Item {
-public:
-    int id;
-    string name[32];
-    int kamas;
-    string description[128];
-    bool useInCombatOnly;
-    int lifePoint;
-    int flowerPoint;
-    // Use the item
-    // Throw the item
-};
 
 // Main class for all characters
 class Character {
