@@ -1,52 +1,36 @@
 {
     "maps": [
         {
-            "name": "Map 1",
-            "background": "background1.jpg",
+            "name": "Tutorial",
+            "background": "tutorial.jpg",
+            "ground_height": 0.450,
+        
             "characters": [
-                {
-                    "name": "Mario",
-                    "x": 100,
-                    "y": 200
-                },
-                {
-                    "name": "Goomba",
-                    "x": 300,
-                    "y": 150
-                }
+                {"name": "Mario","xPosition": 100, "text": "Hello there"},
+                {"name": "RedToad", "xPosition": 200},
+                {"name": "HammerBros","xPosition": 300}
             ],
-            "connections": {
-                "North": "SuperNorth",
-                "East": "Map2"
-            }
-        },
+            
+            "connections": [
+                {"East": [{"x_border_position": -10, "destination": "Hub"}]}
+        ]},
+
         {
-            "name": "Map 2",
-            "background": "background2.jpg",
+            "name": "Hub",
+            "background": "hub.jpg",
+            "ground_height": 0.450,
+
             "characters": [
-                {
-                    "name": "Luigi",
-                    "x": 50,
-                    "y": 100
-                }
+                {"name": "Mario","xPosition": 50},
+                {"name": "RedToad","xPosition": 50, "text": "Welcome to the hub."},
+                {"name": "RedToad","xPosition": 100, "text": "Oh Mario !!!! The real one ?!."},
+                {"name": "RedToad","xPosition": 200, "text": "Hate you."}
             ],
-            "connections": {
-                "West": "Map1"
-            }
-        },
-        {
-            "name": "Super North",
-            "background": "snowy_background.jpg",
-            "characters": [
-                {
-                    "name": "Yoshi",
-                    "x": 200,
-                    "y": 300
-                }
-            ],
-            "connections": {
-                "South": "Map1"
-            }
+
+            "connections": [
+                {"East": [{"x_border_position": 10, "destination": "Tutorial"}]},  
+                {"West": [{"x_border_position": -10, "destination": "FirstStage"}]}  
+            ]
         }
     ]
 }

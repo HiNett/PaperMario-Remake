@@ -2,9 +2,8 @@
 #include <SFML/Graphics.hpp>
 #include <unistd.h>
 #include "./loadingGame.cpp"
-#include "./Characters/HammerBrosClass.cpp"
-#include "./Characters/MarioClass.cpp"
 #include "./Items/Item.cpp"
+#include "./Maps/Maps.cpp"
 
 using namespace std;
 

@@ -1,11 +1,9 @@
-// Maps.cpp
-#include "./Maps.hpp"
-#include <iostream> // For error handling
-#include <fstream>  // For file input
-#include <jsoncpp/json/json.h> // JSON library
+#include <iostream>
+#include <fstream>
+#include "Maps.hpp"
+#include "json/json.h"
 
 Maps::Maps() {
-    // Load map data from JSON file
     loadMapData("maps.json");
 }
 
@@ -16,42 +14,58 @@ void Maps::loadMapData(const std::string& filename) {
         return;
     }
 
+    Json::CharReaderBuilder builder;
     Json::Value root;
-    file >> root;
+    std::string errs;
+    if (!Json::parseFromStream(builder, file, &root, &errs)) {
+        std::cerr << "Failed to parse JSON: " << errs << std::endl;
+        return;
+    }
 
     // Extract maps data from JSON
     const Json::Value& maps = root["maps"];
     for (const auto& mapData : maps) {
-        Map map;
+        Maps map;
         map.name = mapData["name"].asString();
-        map.backgroundFile = mapData["background"].asString();
+        map.background = mapData["background"].asString();
 
-        // Load background texture for the map
-        if (!map.backgroundTexture.loadFromFile(map.backgroundFile)) {
+        // Try to load background texture
+        if (!map.backgroundTexture.loadFromFile("../Assets/InGame/" + map.background)) {
             std::cerr << "Failed to load background texture for map: " << map.name << std::endl;
             continue;
         }
         map.backgroundSprite.setTexture(map.backgroundTexture);
 
+        // Temporary vector to hold characters for this map
+        std::vector<Character> characters;
+
         // Load characters for the map
-        const Json::Value& characters = mapData["characters"];
-        for (const auto& characterData : characters) {
+        const Json::Value& charactersData = mapData["characters"];
+        for (const auto& characterData : charactersData) {
             std::string characterName = characterData["name"].asString();
             float x = characterData["x"].asFloat();
             float y = characterData["y"].asFloat();
-            // Create and initialize characters based on their names
+            // Create and initialize characters based on names
             if (characterName == "Mario") {
                 Mario mario;
                 mario.setPosition(x, y);
-                map.characters.push_back(mario);
+                characters.push_back(mario);
             } else if (characterName == "HammerBros") {
                 HammerBros hammerBros;
                 hammerBros.setPosition(x, y);
-                map.characters.push_back(hammerBros);
-            } // Add more character types as needed
+                characters.push_back(hammerBros);
+            }
         }
 
-        mapsData.push_back(map);
+        // Assign the characters to the map
+        map.characters = characters;
+
+        // Now you can do whatever you want with the characters
+        // For example, you could draw them or update them here
+
+        // Note: If you want to keep track of multiple maps, you should use a vector of Maps
+        // and add each map to that vector instead of overwriting the current map as you're doing here
+
     }
 
     file.close();
@@ -63,7 +77,7 @@ void Maps::update() {
 
 void Maps::draw(sf::RenderWindow& window) {
     // Draw map elements (e.g., background, characters, NPCs, etc.)
-    for (const auto& map : mapsData) {
+    for (const auto& map : mapData) {
         window.draw(map.backgroundSprite);
         for (const auto& character : map.characters) {
             character.draw(window);
