@@ -17,7 +17,6 @@ int main(){
     #define WINDOW_H
     sf::RenderWindow window(sf::VideoMode(1920, 1080), "Paper Mario - Remake");
     #endif
-    initializeItems();
     Mario mario;
     mario.setPosition(mario.xPosition, mario.yPosition);
     HammerBros hammerBrosTutorial;
@@ -201,13 +200,8 @@ int main(){
                     window.clear();
                     window.draw(tutorialSprite);
                     window.draw(ground);
-                    
-                    for (const auto& item : items) {
-                        item.draw(window);
-                    }
-
-                    hammerBrosTutorial.draw(window);
                     mario.draw(window);
+                    hammerBrosTutorial.draw(window);
                     window.display();
                 } else if(marioPhase == 1 && accessPhase >= 1){
                     // Phase 1

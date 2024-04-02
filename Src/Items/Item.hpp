@@ -31,6 +31,6 @@ public:
     virtual void draw(sf::RenderWindow& window);
 };
 
-vector<Item> initializeItems();
+
 
 #endif

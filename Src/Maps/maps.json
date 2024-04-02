@@ -1,0 +1,52 @@
+{
+    "maps": [
+        {
+            "name": "Map 1",
+            "background": "background1.jpg",
+            "characters": [
+                {
+                    "name": "Mario",
+                    "x": 100,
+                    "y": 200
+                },
+                {
+                    "name": "Goomba",
+                    "x": 300,
+                    "y": 150
+                }
+            ],
+            "connections": {
+                "North": "SuperNorth",
+                "East": "Map2"
+            }
+        },
+        {
+            "name": "Map 2",
+            "background": "background2.jpg",
+            "characters": [
+                {
+                    "name": "Luigi",
+                    "x": 50,
+                    "y": 100
+                }
+            ],
+            "connections": {
+                "West": "Map1"
+            }
+        },
+        {
+            "name": "Super North",
+            "background": "snowy_background.jpg",
+            "characters": [
+                {
+                    "name": "Yoshi",
+                    "x": 200,
+                    "y": 300
+                }
+            ],
+            "connections": {
+                "South": "Map1"
+            }
+        }
+    ]
+}

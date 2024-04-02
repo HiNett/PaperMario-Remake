@@ -1,6 +1,5 @@
 #include "Item.hpp"
 
-
 Item::Item() {
     // Load texture from file
     if (!texture.loadFromFile("./Sprites/NormalItems.png")) {
@@ -26,8 +25,7 @@ void Item::draw(sf::RenderWindow& window) {
 
 
 // Initialize the items
-vector<Item> initializeItems() {
-    vector<Item> items;
+void initializeItems() {
 
     Item Mushroom;
     Mushroom.id = 0;
@@ -36,8 +34,6 @@ vector<Item> initializeItems() {
     Mushroom.lifePoint = 5;
     Mushroom.flowerPoint = 0;
     Mushroom.useInCombatOnly = false;
-    Mushroom.setPosition(500, 100);
-    items.push_back(Mushroom);
 
     Item SuperMushroom;
     SuperMushroom.id = 1;
@@ -63,5 +59,4 @@ vector<Item> initializeItems() {
     SuperSirup.flowerPoint = 10;
     SuperSirup.useInCombatOnly = false;
 
-    return items;
 }

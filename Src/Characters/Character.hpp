@@ -91,15 +91,22 @@ class Mario : public Character {
         int flowerPoint;
         int badgePoint;
         int kamas;
-        Item inventory;
+        std::vector<Item> inventory;
 
     public:
+        // Mario's visual methods + movements
         Mario();
         void handleInput(sf::Event& event);
         void loadTexture();
         void setPosition(float x, float y);
         void update();
         void draw(sf::RenderWindow& window);
+
+        // Mario's inventory methods
+        void addItemToInventory(){};
+        void deleteItemToInventory(){};
+        void useItem(){};
+        
 };
 
 // Class to create HammerBros character

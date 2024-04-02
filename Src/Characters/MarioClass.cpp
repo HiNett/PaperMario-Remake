@@ -14,6 +14,8 @@ Mario::Mario() {
     jump;
     jumpMaxHeight = 300.0f;
     gravity = 20.0f;
+    xPosition = 800;
+    yPosition;
     originalXPosition;
     originalYPosition;
 
