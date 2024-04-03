@@ -1,0 +1,24 @@
+{
+    "items": [
+        {
+            "name": "Mushroom",
+            "texturePath": "./Sprites/ItemSprites.png",
+            "intRect": {"left": 200, "top": 200, "width": 40, "height": 40},
+            "kamas": 10,
+            "description": "Yummy mushi",
+            "useInCombatOnly": 0,
+            "lifePoint": 5,
+            "flowerPoint": 0
+        },
+        {
+            "name": "",
+            "texturePath": "./Sprites/ItemSprites.png",
+            "intRect": {"left": 200, "top": 200, "width": 40, "height": 40},
+            "kamas": "",
+            "description": "",
+            "useInCombatOnly": "",
+            "lifePoint": "",
+            "flowerPoint": "" 
+        }
+    ]
+}

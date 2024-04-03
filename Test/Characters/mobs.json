@@ -1,0 +1,47 @@
+{
+    "mario": [
+        {
+            "name": "Mario",
+            "texturePath": "./Sprites/MarioSprites.png",
+            "leftFeetFrames": [
+                {"left": 1070, "top": 1918, "width": 42, "height": 31},
+                {"left": 1070, "top": 2021, "width": 44, "height": 31},
+                {"left": 1070, "top": 2065, "width": 43, "height": 31}
+            ],
+            "rightFeetFrames": [
+                {"left": 1070, "top": 1918, "width": 42, "height": 31},
+                {"left": 1070, "top": 2021, "width": 44, "height": 31},
+                {"left": 1070, "top": 2065, "width": 43, "height": 31}
+            ],
+            "body": {"left": 1079, "top": 1834, "width": 57, "height": 59},
+            "leftArm": {"left": 1666, "top": 1588, "width": 29, "height": 51},
+            "rightArm": {"left": 0, "top": 0, "width": 0, "height": 0},
+            "leftHand": {"left": 1564, "top": 1918, "width": 39, "height": 39},
+            "rightHand": {"left": 1209, "top": 2206, "width": 40, "height": 41},
+            "head": {"left": 1067, "top": 1507, "width": 101, "height": 92},
+            
+            "lifePoint": 10,
+            "power": 1,
+            "defense": 0,
+            "experiencePoint": 0,
+            "level": 1,
+            "flowerPoint": 5,
+            "badgePoint": 3,
+            "kamas": 1000
+        }
+    ],
+    "npcs": [
+        {
+            "name": "Hammer Bro",
+            "texturePath": "./Sprites/HammerBro.png",
+            "intRect": {"left": 649, "top": 3, "width": 149, "height": 172},
+            "lifePoint": 7,
+            "power": 1,
+            "defense": 0,
+            "aggressive": false,
+            "attributionExperiencePoint": 10,
+            "jumpDenied": false,
+            "hammerDenied": false
+        }
+    ]
+}
