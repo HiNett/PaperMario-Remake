@@ -1,17 +1,20 @@
 // clear; g++ main.cpp ./Characters/NpcClass.cpp ./Characters/MarioClass.cpp -o "./Bin/Paper Mario - Remake.exe" -lsfml-graphics -lsfml-window -lsfml-system -ljsoncpp
 #include <SFML/Graphics.hpp>
+#include <iostream>
+
 #include "./Characters/Character.hpp" // Include the NPC class header
+#include "./Maps/Maps.hpp" // Include the Maps class header
 
 int main() {
     // Create the SFML window
     sf::RenderWindow window(sf::VideoMode(1600, 900), "NPC Example");
 
+    // Create the MAP
+    Maps map("tutorial", "./Maps/maps.json", window);
     // Create an NPC
     Mario mario("Mario", "./Characters/mobs.json"); // Provide the name and JSON filename
-    NPC npc("Hammer Bro", "./Characters/mobs.json"); // Provide the name and JSON filename
 
     // Set the NPC's position
-    npc.setPosition(100.0f, 100.0f);
     mario.setPosition(200.0f, 100.0f);
 
     // Main loop
@@ -26,13 +29,12 @@ int main() {
         }
 
         // Update
-        npc.update();
         mario.update();
         // Clear the window
         window.clear();
 
         // Draw
-        npc.draw(window);
+        map.draw(window);
         mario.draw(window);
 
         // Display the window

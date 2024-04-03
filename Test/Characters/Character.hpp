@@ -2,7 +2,7 @@
 #define CHARACTER_HPP
 
 #include <SFML/Graphics.hpp>
-#include "../json/json.h" // Include JSON library
+#include "../json/json.h"
 
 class Character {
 protected:

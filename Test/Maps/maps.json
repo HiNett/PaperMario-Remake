@@ -1,0 +1,23 @@
+{
+    "maps": [
+        {
+            "name": "tutorial",
+            "texturePath": "./Background/tutorial.png",
+            "ground_height": 300,
+            "characters": [
+                {"name": "HammerBro", "xPosition": 50},
+                {"name": "RedToad", "xPosition": 300, "text": "Hello Mario!!"},
+                {"name": "RedToad", "xPosition": 500, "text": "Hello Mario!!"},
+                {"name": "RedToad", "xPosition": 700, "text": "Hello Mario!!"},
+                {"name": "RedToad", "xPosition": 100, "text": "Hello Mario!!"},
+                {"name": "RedToad", "xPosition": 150, "text": "Hello Mario!!"},
+                {"name": "BlueToad", "xPosition": 500, "text": "Good bye Mario!"}
+
+            ]
+        },
+        {
+            "name": "download",
+            "texturePath": "./Background/download.png"
+        }
+    ]
+}

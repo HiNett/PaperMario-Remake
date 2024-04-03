@@ -38,8 +38,20 @@
             "lifePoint": 7,
             "power": 1,
             "defense": 0,
-            "aggressive": false,
+            "aggressive": true,
             "attributionExperiencePoint": 10,
+            "jumpDenied": false,
+            "hammerDenied": false
+        },
+        {
+            "name": "RedToad",
+            "texturePath": "./Sprites/Toads.png",
+            "intRect": {"left": 10, "top": 240, "width": 104, "height": 140},
+            "lifePoint": 0,
+            "power": 1,
+            "defense": 0,
+            "aggressive": false,
+            "attributionExperiencePoint": 0,
             "jumpDenied": false,
             "hammerDenied": false
         }
