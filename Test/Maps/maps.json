@@ -3,9 +3,10 @@
         {
             "name": "tutorial",
             "texturePath": "./Background/tutorial.png",
-            "ground_height": 300,
+            "soundPath": "./Sounds/tutoria.mp3",
+            "groundHeight": 220,
             "characters": [
-                {"name": "HammerBro", "xPosition": 50},
+                {"name": "Hammer Bro", "xPosition": 50},
                 {"name": "RedToad", "xPosition": 300, "text": "Hello Mario!!"},
                 {"name": "RedToad", "xPosition": 500, "text": "Hello Mario!!"},
                 {"name": "RedToad", "xPosition": 700, "text": "Hello Mario!!"},

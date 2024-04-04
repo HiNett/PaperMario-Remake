@@ -16,6 +16,9 @@ class Maps {
         sf::Vector2u windowSize;
 
         std::vector<NPC*> npcs;
+        Mario* mario;
+
+        sf::RectangleShape ground;
 
     public:
         // Arguments
@@ -28,6 +31,8 @@ class Maps {
         Maps(const std::string& name, const std::string& jsonFilename, const sf::RenderWindow& window);
         void update();
         void draw(sf::RenderWindow& window);
+
+        void handleInput(sf::Event& event);
 
         ~Maps() {
             for (auto& npc : npcs) {

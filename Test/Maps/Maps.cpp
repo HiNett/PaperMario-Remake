@@ -38,16 +38,28 @@ Maps::Maps(const std::string& name, const std::string& jsonFilename, const sf::R
             sprite.setTexture(texture);
             sprite.setScale(scaleX, scaleY);
             sprite.setPosition(0, 0);
+            
+            ground.setSize(sf::Vector2f(8000, mapData["groundHeight"].asFloat()));
+            float minGroundY = windowSize.y - mapData["groundHeight"].asFloat();
+            std::cout << minGroundY << std::endl;
+            ground.setPosition(0, minGroundY);
+            ground.setFillColor(sf::Color::Green);
+
+            // Create Mario object
+            mario = new Mario("Mario", "./Characters/mobs.json", minGroundY); // Adjust JSON filename as needed
+            mario->setPosition(20, minGroundY - 167); // Set position
 
             const Json::Value& characters = mapData["characters"];
             for (const auto& characterData : characters) {
                 std::string characterName = characterData["name"].asString();
                 float xPosition = characterData["xPosition"].asFloat();
+                
                 // Create NPC object
                 NPC* npc = new NPC(characterName, "./Characters/mobs.json"); // Adjust JSON filename as needed
-                npc->setPosition(xPosition, mapData["ground_height"].asFloat()); // Set position
+                float spriteHeight = npc->getHeight();
+                npc->setPosition(xPosition, minGroundY - spriteHeight); // Set position
+
                 // Add NPC to a collection or use as needed
-                std::cout << characterName << " have been printed" << std::endl;
                 npcs.push_back(npc);
             }
 
@@ -55,13 +67,23 @@ Maps::Maps(const std::string& name, const std::string& jsonFilename, const sf::R
     }
 }
 
+
 void Maps::update() {
-    // Update Maps logic here
+    if (mario != nullptr) {
+        mario->update();
+    }
 }
 
 void Maps::draw(sf::RenderWindow& window) {
     window.draw(sprite);
     for (auto& npc : npcs) {
         npc->draw(window);
+    }
+    mario->draw(window);
+}
+// Take the Mario::handle
+void Maps::handleInput(sf::Event& event) {
+    if (mario != nullptr) {
+        mario->handleInput(event);
     }
 }

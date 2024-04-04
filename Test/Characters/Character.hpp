@@ -30,6 +30,8 @@ public:
     virtual void setPosition(float x, float y) = 0;
     virtual void update() = 0;
     virtual void draw(sf::RenderWindow& window) const = 0;
+
+
 };
 
 // NPC class
@@ -51,6 +53,10 @@ public:
     void setPosition(float x, float y) override;
     void update() override;
     void draw(sf::RenderWindow& window) const override;
+    
+    float getHeight() const{
+        return sprite.getLocalBounds().height;
+    }
 };
 
 class Mario : public Character {
@@ -70,7 +76,7 @@ private:
 
     // Setup Values
     bool jump;
-    float jumpMaxHeight = 300.0f;
+    float jumpMaxHeight;
     float originalXPosition;
     float originalYPosition;
 
@@ -83,9 +89,10 @@ private:
     // vector<Item> inventory;
     float xPosition;
     float yPosition;
+    float minGroundY;
 public:
     // Constructor
-    Mario(const std::string& name, const std::string& jsonFilename);
+    Mario(const std::string& name, const std::string& jsonFilename, float minGroundY);
 
     // Visual
     void setPosition(float x, float y) override;

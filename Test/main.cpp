@@ -9,13 +9,9 @@ int main() {
     // Create the SFML window
     sf::RenderWindow window(sf::VideoMode(1600, 900), "NPC Example");
 
-    // Create the MAP
+    // Create the MAP with all the content
     Maps map("tutorial", "./Maps/maps.json", window);
-    // Create an NPC
-    Mario mario("Mario", "./Characters/mobs.json"); // Provide the name and JSON filename
 
-    // Set the NPC's position
-    mario.setPosition(200.0f, 100.0f);
 
     // Main loop
     while (window.isOpen()) {
@@ -25,17 +21,17 @@ int main() {
             if (event.type == sf::Event::Closed)
                 window.close();
             
-            mario.handleInput(event);
+            map.handleInput(event);
         }
 
         // Update
-        mario.update();
+        map.update();
+        
         // Clear the window
         window.clear();
 
         // Draw
         map.draw(window);
-        mario.draw(window);
 
         // Display the window
         window.display();

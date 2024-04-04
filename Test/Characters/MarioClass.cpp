@@ -3,9 +3,9 @@
 #include "../json/json.h" // Include JSON library
 #include "./Character.hpp"
 
-Mario::Mario(const std::string& name, const std::string& jsonFilename) {
+Mario::Mario(const std::string& name, const std::string& jsonFilename, float minGroundY) {
     // Initialize member variables properly
-    moveSpeed = 10.0f;
+    moveSpeed = 2.0f;
     movingLeft = false;
     movingRight = false;
     movingUp = false;
@@ -13,12 +13,13 @@ Mario::Mario(const std::string& name, const std::string& jsonFilename) {
     lookingLeft = false;
     lookingRight = false;
     currentFrame = 0;
-    animationSpeed = 0.5f;
+    animationSpeed = 1.5f;
     jump = false;
-    jumpMaxHeight = 300.0f;
-    gravity = 20.0f;
+    jumpMaxHeight = 500.0f;
+    gravity = 8.0f;
     originalXPosition = 0;
     originalYPosition = 0;
+    this->minGroundY = minGroundY;
 
     // Load NPC data from JSON
     std::ifstream file(jsonFilename);
@@ -167,8 +168,7 @@ void Mario::update() {
         // Falling logic
         yPosition += gravity;
         // Ensure Mario does not fall below the ground level
-        if (yPosition >= 800) {
-            yPosition = 800;
+        if (yPosition >= (minGroundY - 167)) {
             jump = true; // Mario touches the ground, allow jumping again
         }
     }
@@ -209,13 +209,13 @@ void Mario::draw(sf::RenderWindow& window) const {
 
 void Mario::handleInput(sf::Event& event) {
     if (event.type == sf::Event::KeyPressed) {
-        if (event.key.code == sf::Keyboard::Left && !movingRight) {
+        if (event.key.code == sf::Keyboard::Left) {
             movingLeft = true;     
             lookingLeft = true;       
             movingRight = false;
             lookingRight = false;
         }
-        if (event.key.code == sf::Keyboard::Right && !movingLeft) {
+        if (event.key.code == sf::Keyboard::Right) {
             movingLeft = false;
             lookingLeft = false;
             movingRight = true;
